@@ -1,6 +1,7 @@
 package calculator.model;
 
 import calculator.handler.InputHandler;
+import calculator.validator.OperandValidator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.Set;
 public class CustomCalculator implements Calculator{
 
     private final InputHandler inputHandler;
+    private OperandValidator operandValidator = new OperandValidator();
     private String formula;
     private Set<String> separators = new HashSet<>(List.of(",", ":"));
 
@@ -48,7 +50,9 @@ public class CustomCalculator implements Calculator{
         String[] numbers = formula.split(regex);
         for(String number : numbers){
             if(!number.isEmpty()){
-                operands.add(Integer.parseInt(number));
+                int numberValue = Integer.parseInt(number);
+                operandValidator.validatePositiveNumber(numberValue);
+                operands.add(numberValue);
             }
         }
 
