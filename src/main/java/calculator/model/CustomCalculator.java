@@ -50,9 +50,8 @@ public class CustomCalculator implements Calculator{
         String[] numbers = formula.split(regex);
         for(String number : numbers){
             if(!number.isEmpty()){
-                int numberValue = Integer.parseInt(number);
-                operandValidator.validatePositiveNumber(numberValue);
-                operands.add(numberValue);
+                operandValidator.validatePositiveNumber(number);
+                operands.add(Integer.parseInt(number));
             }
         }
 
