@@ -30,10 +30,13 @@ public class CustomCalculator implements Calculator{
     private void addCustomOperator(){
 
         if(formula.startsWith("//")){
-            int index = formula.indexOf("\\n");
+            int index = formula.lastIndexOf("\\n");
             if(index != -1){
                 for(int i = 2; i < index; i++){
                     String customOperator = formula.substring(i, i + 1);
+                    if(customOperator.equals("\\")) {
+                        customOperator = "\\\\";
+                    }
                     separators.add(customOperator);
                 }
             }

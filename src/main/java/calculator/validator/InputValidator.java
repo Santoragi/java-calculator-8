@@ -12,7 +12,7 @@ public class InputValidator {
      */
     public void validateInputFormat(String input) {
         if(input.startsWith("//")) {
-            int index = input.indexOf("\\n");
+            int index = input.lastIndexOf("\\n");
             if(index == -1) {
                 throw new IllegalArgumentException("커스텀 구분자는 //과 \\n 사이에 있어야합니다.");
             }else {
