@@ -5,8 +5,7 @@ import calculator.config.CalculatorConfig;
 public class InputValidator {
 
     /**
-     * 요구하는 형식과 사용자의 입력 형식이 올바른지 검증 - "//" 으로 시작한다면 "\n"이 존재하는지 확인 - 커스텀 구분자에 숫자가 포함되지 않는지 확인 - 커스텀 구분자를 제외한 수식이 숫자로
-     * 시작하는지 확인
+     * 요구하는 형식과 사용자의 입력 형식이 올바른지 검증
      */
     public void validateInputFormat(String input) {
         if (input.startsWith(CalculatorConfig.CUSTOM_SEPARATOR_START)) {
