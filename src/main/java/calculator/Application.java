@@ -1,7 +1,9 @@
 package calculator;
 
 import calculator.handler.ConsoleInputHandler;
+import calculator.handler.ConsoleOutputHandler;
 import calculator.handler.InputHandler;
+import calculator.handler.OutputHandler;
 import calculator.model.Calculator;
 import calculator.model.CustomCalculator;
 
@@ -10,7 +12,8 @@ public class Application {
         // TODO: 프로그램 구현
         // TODO: InputHandler, Calculator, Validator
         InputHandler inputHandler = new ConsoleInputHandler();
-        Calculator calculator = new CustomCalculator(inputHandler);
+        OutputHandler outputHandler = new ConsoleOutputHandler();
+        Calculator calculator = new CustomCalculator(inputHandler, outputHandler);
         calculator.run();
 
     }

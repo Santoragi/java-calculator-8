@@ -2,6 +2,7 @@ package calculator.model;
 
 import calculator.config.CalculatorConfig;
 import calculator.handler.InputHandler;
+import calculator.handler.OutputHandler;
 import calculator.validator.OperandValidator;
 
 import java.util.ArrayList;
@@ -13,12 +14,14 @@ import java.util.regex.Pattern;
 public class CustomCalculator implements Calculator{
 
     private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
     private OperandValidator operandValidator = new OperandValidator();
     private String formula;
     private Set<String> separators = new HashSet<>(CalculatorConfig.DEFAULT_SEPARATORS);
 
-    public CustomCalculator(InputHandler inputHandler){
+    public CustomCalculator(InputHandler inputHandler, OutputHandler outputHandler){
         this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
     }
 
     @Override
@@ -63,7 +66,7 @@ public class CustomCalculator implements Calculator{
             result += o;
         }
 
-        System.out.println("결과 : " + result);
+        outputHandler.print(result);
     }
 
     public String getFormula(){
