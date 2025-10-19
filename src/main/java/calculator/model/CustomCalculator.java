@@ -28,11 +28,11 @@ public class CustomCalculator implements Calculator{
     public void run() {
 
         setFormula(inputHandler.getInput());
-        addCustomOperator();
+        addCustomSeparator();
         calculate();
     }
 
-    private void addCustomOperator(){
+    private void addCustomSeparator(){
 
         if(formula.startsWith(CalculatorConfig.CUSTOM_SEPARATOR_START)){
             int index = formula.lastIndexOf(CalculatorConfig.CUSTOM_SEPARATOR_END);
@@ -67,10 +67,6 @@ public class CustomCalculator implements Calculator{
         }
 
         outputHandler.print(result);
-    }
-
-    public String getFormula(){
-        return formula;
     }
 
     public void setFormula(String formula) {
