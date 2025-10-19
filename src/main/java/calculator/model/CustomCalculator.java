@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class CustomCalculator implements Calculator{
 
@@ -34,9 +35,6 @@ public class CustomCalculator implements Calculator{
             if(index != -1){
                 for(int i = 2; i < index; i++){
                     String customOperator = formula.substring(i, i + 1);
-                    if(customOperator.equals("\\")) {
-                        customOperator = "\\\\";
-                    }
                     separators.add(customOperator);
                 }
             }
@@ -49,7 +47,10 @@ public class CustomCalculator implements Calculator{
 
         List<Integer> operands = new ArrayList<>();
 
-        String regex = "[" + separators + "]";
+        String regex = separators.stream()
+                .map(Pattern::quote)
+                .reduce((a, b) -> a + "|" + b)
+                .orElse("");
         String[] numbers = formula.split(regex);
         for(String number : numbers){
             if(!number.isEmpty()){
