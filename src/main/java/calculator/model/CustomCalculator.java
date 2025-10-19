@@ -54,10 +54,8 @@ public class CustomCalculator implements Calculator{
                 .orElse("");
         String[] numbers = formula.split(regex);
         for(String number : numbers){
-            if(!number.isEmpty()){
-                operandValidator.validatePositiveNumber(number);
-                operands.add(Integer.parseInt(number));
-            }
+            operandValidator.validatePositiveNumber(number);
+            operands.add(Integer.parseInt(number));
         }
 
         int result = 0;
