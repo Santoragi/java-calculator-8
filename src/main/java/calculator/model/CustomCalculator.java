@@ -1,5 +1,6 @@
 package calculator.model;
 
+import calculator.config.CalculatorConfig;
 import calculator.handler.InputHandler;
 import calculator.validator.OperandValidator;
 
@@ -14,7 +15,7 @@ public class CustomCalculator implements Calculator{
     private final InputHandler inputHandler;
     private OperandValidator operandValidator = new OperandValidator();
     private String formula;
-    private Set<String> separators = new HashSet<>(List.of(",", ":"));
+    private Set<String> separators = new HashSet<>(CalculatorConfig.DEFAULT_SEPARATORS);
 
     public CustomCalculator(InputHandler inputHandler){
         this.inputHandler = inputHandler;
@@ -30,16 +31,16 @@ public class CustomCalculator implements Calculator{
 
     private void addCustomOperator(){
 
-        if(formula.startsWith("//")){
-            int index = formula.lastIndexOf("\\n");
+        if(formula.startsWith(CalculatorConfig.CUSTOM_SEPARATOR_START)){
+            int index = formula.lastIndexOf(CalculatorConfig.CUSTOM_SEPARATOR_END);
             if(index != -1){
-                for(int i = 2; i < index; i++){
+                for(int i = CalculatorConfig.CUSTOM_SEPARATOR_START.length(); i < index; i++){
                     String customOperator = formula.substring(i, i + 1);
                     separators.add(customOperator);
                 }
             }
 
-            formula = formula.substring(index + 2);
+            formula = formula.substring(index + CalculatorConfig.CUSTOM_SEPARATOR_END.length());
         }
     }
 
