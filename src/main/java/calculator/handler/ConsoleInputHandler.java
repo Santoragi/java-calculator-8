@@ -3,7 +3,7 @@ package calculator.handler;
 import calculator.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-public class ConsoleInputHandler implements InputHandler{
+public class ConsoleInputHandler implements InputHandler {
 
     InputValidator inputValidator = new InputValidator();
 
